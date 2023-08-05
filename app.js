@@ -1,15 +1,24 @@
 const { spawn } = require('node:child_process');
+const path = require('path');
 
 const Koa = require("koa");
 const bodyParser = require("koa-bodyparser");
+const serve = require('koa-static');
+const Router = require('koa-router');
+
 const app = new Koa();
+const router = new Router();
+
 app.use(bodyParser());
 
-app.use(async (ctx) => {
+router.post('/api', async (ctx) => {
     const commandString = ctx.request.body.commandString;
     const result = await asyncRunInShell(commandString);
     ctx.body = result;
 });
+
+app.use(router.routes());
+app.use(serve(path.join(__dirname, '/static')));
 
 app.listen(3000);
 console.log("Server listening on port 3000");
