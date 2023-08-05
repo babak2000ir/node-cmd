@@ -1,0 +1,15 @@
+{
+  "name": "node-cmd",
+  "version": "1.0.0",
+  "description": "frontend cmd shell using nodejs child process",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.1"
+  }
+}
