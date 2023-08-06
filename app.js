@@ -1,15 +1,23 @@
-const { spawn } = require('node:child_process');
-const path = require('path');
+//import node
+import { spawn } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const Koa = require("koa");
-const bodyParser = require("koa-bodyparser");
-const serve = require('koa-static');
-const Router = require('koa-router');
+//import npm
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import serve from 'koa-static';
+import Router from 'koa-router';
 
+//consts
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+//init
 const app = new Koa();
 const router = new Router();
-
 app.use(bodyParser());
+
 
 router.post('/api', async (ctx) => {
     const commandString = ctx.request.body.commandString;
