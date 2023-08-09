@@ -34,7 +34,7 @@ app.use(router.routes());
 app.use(serve(path.join(__dirname, '../../client/build')));
 
 app.listen(3000);
-console.log("Server listening on port 3000");
+console.log("Server is listening on port 3000");
 
 async function asyncRunInShell(cmdString) {
     return new Promise((resolve) => {

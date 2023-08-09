@@ -17,8 +17,8 @@ const configBuilder = (env, argv) => {
     },
     plugins: [
       new NodemonPlugin({
-        script: './dist/server.cjs',
-        watch: path.resolve('./dist'),
+        script: (argv.mode === 'development') ? './src/app.js' : './dist/server.cjs',
+        watch: path.resolve('./src'),
         ext: 'js,njk,json,cjs',
         delay: '1000',
         verbose: true,
