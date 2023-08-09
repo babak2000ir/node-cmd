@@ -18,6 +18,11 @@ const app = new Koa();
 const router = new Router();
 app.use(bodyParser());
 
+app.use(async (ctx, next) => {
+    const timeStamp = `${(new Date()).toLocaleDateString('en-GB')} ${(new Date()).toLocaleTimeString('en-GB')}`;
+    console.log(`${timeStamp} ${ctx.request.method} '${ctx.request.url}' ${JSON.stringify(ctx.request.body)}`);
+    await next();
+});
 
 router.post('/api', async (ctx) => {
     const commandString = ctx.request.body.commandString;
@@ -26,7 +31,7 @@ router.post('/api', async (ctx) => {
 });
 
 app.use(router.routes());
-app.use(serve(path.join(__dirname, '/static')));
+app.use(serve(path.join(__dirname, '../../client/static')));
 
 app.listen(3000);
 console.log("Server listening on port 3000");
