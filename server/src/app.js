@@ -31,7 +31,7 @@ router.post('/api', async (ctx) => {
 });
 
 app.use(router.routes());
-app.use(serve(path.join(__dirname, '../../client/static')));
+app.use(serve(path.join(__dirname, '../../client/build')));
 
 app.listen(3000);
 console.log("Server listening on port 3000");
