@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const label = "Adafruity";
+  const label = "Ada";
   return (
     <div className="App">
       <header className="App-header">
