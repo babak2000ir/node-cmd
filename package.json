@@ -1,5 +1,5 @@
 {
-  "name": "parent-folder",
+  "name": "nodejs-react-cmd-shell",
   "description": "frontend cmd shell using nodejs child process",
   "version": "1.0.0",
   "scripts": {
