@@ -1,17 +1,12 @@
 //import node
 import { spawn } from 'node:child_process';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 //import npm
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import serve from 'koa-static';
 import Router from 'koa-router';
-
-//consts
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 //init
 const app = new Koa();
@@ -31,7 +26,8 @@ router.post('/api', async (ctx) => {
 });
 
 app.use(router.routes());
-app.use(serve(path.join(__dirname, '../../client/build')));
+
+app.use(serve(path.join(__dirname, '/client')));
 
 app.listen(3000);
 console.log("Server is listening on port 3000");

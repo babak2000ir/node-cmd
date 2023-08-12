@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import NodemonPlugin from 'nodemon-webpack-plugin';
+import webpack from 'webpack';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,10 @@ const configBuilder = (env, argv) => {
       filename: 'server.cjs',
       path: __dist,
     },
+    resolve: {
+      alias: {
+      },
+    },
     plugins: [
       new NodemonPlugin({
         script: (argv.mode === 'development') ? __src + '/app.js' : __dist + '/server.cjs',
@@ -26,6 +31,8 @@ const configBuilder = (env, argv) => {
         env: {
           NODE_ENV: argv.mode,
         },
+      }),
+      new webpack.DefinePlugin({
       }),
     ],
   };
