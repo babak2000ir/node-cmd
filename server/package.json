@@ -1,7 +1,5 @@
 {
-  "name": "node-cmd",
-  "version": "1.0.0",
-  "description": "frontend cmd shell using nodejs child process",
+  "name": "server",
   "type": "module",
   "private": true,
   "scripts": {
