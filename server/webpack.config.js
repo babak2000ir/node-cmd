@@ -4,23 +4,24 @@ import NodemonPlugin from 'nodemon-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
+const __src = path.resolve(__dirname, 'src');
+const __dist = path.resolve(__dirname, 'dist');
 
 const configBuilder = (env, argv) => {
   const config = {
-    entry: './src/app.js',
+    entry: __src + '/app.js',
     target: 'node',
     output: {
       filename: 'server.cjs',
-      path: path.resolve(__dirname, 'dist'),
+      path: __dist,
     },
     plugins: [
       new NodemonPlugin({
-        script: (argv.mode === 'development') ? './src/app.js' : './dist/server.cjs',
+        script: (argv.mode === 'development') ? __src + '/app.js' : __dist + '/server.cjs',
         watch: path.resolve('./src'),
         ext: 'js,njk,json,cjs',
         delay: '1000',
+        nodeArgs: ['--inspect=9222'],
         verbose: true,
         env: {
           NODE_ENV: argv.mode,
