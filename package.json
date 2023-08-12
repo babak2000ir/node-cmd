@@ -3,7 +3,7 @@
   "scripts": {
     "start:server": "cd server && npm run dev",
     "start:client": "cd client && npm start",
-    "start": "concurrently \"npm run start:client\" \"npm run start:server\" "
+    "start": "concurrently --timings true \"npm run start:client\" \"npm run start:server\" "
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
